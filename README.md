@@ -22,7 +22,7 @@ A responsive, full-stack wishlist and gift-list application inspired by publicly
 
 ## Requirements
 
-Install Node.js 20+, npm, Java 17+, and Maven 3.9+. Docker Compose is recommended for PostgreSQL.
+Install Node.js 20.9+, npm, Java 17+, and Maven 3.9+. Docker Compose is recommended for PostgreSQL.
 
 ## Run locally
 
