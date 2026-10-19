@@ -23,6 +23,26 @@ jobs:
       - run: npm run build
   backend:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: wishful
+          POSTGRES_USER: wishful
+          POSTGRES_PASSWORD: wishful_local_only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U wishful -d wishful"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 15
+    env:
+      DATABASE_URL: jdbc:postgresql://localhost:5432/wishful
+      DATABASE_USERNAME: wishful
+      DATABASE_PASSWORD: wishful_local_only
+      JWT_SECRET: ci-only-test-signing-key-at-least-thirty-two-bytes-long
+      FRONTEND_URL: http://localhost:3000
     defaults:
       run:
         working-directory: backend
