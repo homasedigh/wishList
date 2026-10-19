@@ -24,7 +24,7 @@ CREATE TABLE wishlist_item (
   product_url VARCHAR(2048) NOT NULL,
   image_url VARCHAR(2048),
   price NUMERIC(12,2),
-  currency CHAR(3) NOT NULL DEFAULT 'GBP',
+  currency VARCHAR(3) NOT NULL DEFAULT 'GBP',
   note VARCHAR(1000),
   reserved BOOLEAN NOT NULL DEFAULT FALSE,
   reserved_at TIMESTAMPTZ,
