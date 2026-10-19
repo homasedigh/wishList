@@ -147,3 +147,17 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Java / Maven
+backend/target/
+**/target/
+
+# Local IDE and OS files
+.idea/
+*.iml
+.DS_Store
+.vscode/
+
+# Local logs and runtime data
+*.log
+*.pid
