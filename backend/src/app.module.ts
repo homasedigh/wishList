@@ -7,7 +7,7 @@ import { IsBoolean, IsEmail, IsIn, IsNotEmpty, IsNumber, IsOptional, IsString, M
 const visibilityValues = ['PRIVATE', 'LINK', 'PUBLIC'];
 type Visibility = 'PRIVATE' | 'LINK' | 'PUBLIC';
 type User = { [key: string]: any; id: number; name: string; email: string; password_hash?: string };
-type Item = { id: number; title: string; productUrl: string; imageUrl: string | null; price: string | null; currency: string; note: string | null; reserved: boolean; createdAt: string };
+type Item = { id: number; title: string; productUrl: string; imageUrl: string | null; price: number | null; currency: string; note: string | null; reserved: boolean; createdAt: string };
 type Wishlist = { id: number; title: string; description: string | null; shareToken: string; visibility: Visibility; giftList: boolean; items: Item[]; createdAt: string };
 
 class RegisterDto {
