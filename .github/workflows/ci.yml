@@ -1,7 +1,7 @@
 name: Build and test
 on:
   push:
-    branches: [first, main]
+    branches: [first, main, backend-node-migration]
   pull_request:
     branches: [first, main]
   workflow_dispatch:
@@ -41,9 +41,7 @@ jobs:
           --health-timeout 3s
           --health-retries 15
     env:
-      DATABASE_URL: jdbc:postgresql://localhost:5432/wishful
-      DATABASE_USERNAME: wishful
-      DATABASE_PASSWORD: wishful_local_only
+      DATABASE_URL: postgres://wishful:wishful_local_only@localhost:5432/wishful
       JWT_SECRET: ci-only-test-signing-key-at-least-thirty-two-bytes-long
       FRONTEND_URL: http://localhost:3000
     defaults:
@@ -51,10 +49,10 @@ jobs:
         working-directory: backend
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-node@v4
         with:
-          distribution: temurin
-          java-version: 17
-          cache: maven
-      - run: mvn --batch-mode test
-      - run: mvn --batch-mode package -DskipTests
+          node-version: 20
+      - run: npm install
+      - run: npm test
+      - run: npm run lint
+      - run: npm run build
