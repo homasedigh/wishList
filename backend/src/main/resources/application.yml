@@ -29,3 +29,9 @@ app:
     expiration-minutes: 720
   cors:
     allowed-origin: ${FRONTEND_URL:http://localhost:3000}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
