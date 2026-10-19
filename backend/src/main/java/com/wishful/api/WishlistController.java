@@ -70,7 +70,7 @@ public class WishlistController {
         WishlistItem item = new WishlistItem(); item.setWishlist(list); item.setTitle(request.title().trim()); item.setProductUrl(request.url().trim());
         item.setImageUrl(clean(request.imageUrl())); item.setPrice(request.price()); item.setCurrency(request.currency() == null ? "GBP" : request.currency().toUpperCase(Locale.ROOT));
         item.setNote(clean(request.note())); list.getItems().add(item);
-        return ItemResponse.from(item);
+        return ItemResponse.from(items.save(item));
     }
 
     @PutMapping("/wishlists/{listId}/items/{itemId}")
